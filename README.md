@@ -1,12 +1,12 @@
-= Getting started with this Chef repo =
+# Getting started with this Chef repo #
 
-If you already have Ruby installed (OS X does) just run `gem install chef` to get our latest release. You can use Hosted Chef (http://www.opscode.com/hosted-chef/) as the server side since you 
+If you already have Ruby installed (OS X does) just run `gem install chef` to get our latest release. You can use [Hosted Chef](http://www.opscode.com/hosted-chef/) as the server side since you 
 don't need more than the 5 free nodes. After signing up with Hosted Chef you will need to download both your own key and the organization validator key, and download a knife.rb config file. Install
 all of these to ~/.chef folder. Upload the cookbooks with `knife cookbook upload -a` and the roles with ``for f in roles/*.rb; do knife role from file `basename $f`; done``.
 
-== Configuring cloud credentials ==
+## Configuring cloud credentials ##
 
-http://wiki.opscode.com/display/chef/Launch+Cloud+Instances+with+Knife shows a general overview but to get EC2 working quickly just ``gem install knife-ec2`` and add the following to your knife.rb:
+[The Chef wiki](http://wiki.opscode.com/display/chef/Launch+Cloud+Instances+with+Knife) shows a general overview but to get EC2 working quickly just ``gem install knife-ec2`` and add the following to your knife.rb:
 
     knife[:aws_access_key_id]  = '<your key id>'
     knife[:aws_secret_access_key] = '<your access key>'
@@ -14,7 +14,7 @@ http://wiki.opscode.com/display/chef/Launch+Cloud+Instances+with+Knife shows a g
     knife[:flavor] = 'm1.small'
     knife[:image] = 'ami-7000f019'
 
-== Launching servers ==
+## Launching servers ##
 
 To start a single server running all components:
 
