@@ -1,0 +1,26 @@
+try:
+    from celery_settings import *
+except ImportError:
+    pass
+
+DEBUG = <%= @debug ? "True" : "False" %>
+
+DATABASES = {
+    'default': {
+        'NAME': '<%= @database[:settings][:database] %>',
+        'ENGINE': 'django.db.backends.<%= @database[:settings][:engine] %>',
+        'USER': '<%= @database[:settings][:username] %>',
+        'PASSWORD': '<%= @database[:settings][:password] %>',
+        'HOST': '<%= @database[:host] %>',
+        'PORT': '<%= @database[:settings][:port]  %>',
+    },
+}
+
+ROOT_URLCONF = "urls"
+
+LOCAL_INSTALLED_APPS = []
+try:
+    import gunicorn
+    LOCAL_INSTALLED_APPS += ['gunicorn']
+except ImportError:
+    pass
