@@ -12,6 +12,7 @@ application "packaginator" do
     requirements "requirements/mkii.txt"
     settings_template "settings.py.erb"
     debug true
+    collectstatic "build_static --noinput"
     database do
       database "packaginator"
       engine "postgresql_psycopg2"
@@ -19,7 +20,6 @@ application "packaginator" do
       password "awesome_password"
     end
     database_master_role "packaginator_database_master"
-    collectstatic "build_static --noinput"
   end
 
   gunicorn do
